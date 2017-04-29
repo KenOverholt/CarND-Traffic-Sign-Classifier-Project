@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [histogram1]: ./writeup_images/histogram1.jpg "Set counts"
 [image2]: ./writeup_images/color1.jpg "Color image"
 [image3]: ./writeup_images/grayscale1.jpg "Grayscale image"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
+[image4]: ./writeup_images/5_new_signs.jpg "The 5 new signs"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
@@ -91,25 +91,18 @@ For my final model, I used the LeNet architecture modified for the grayscale ima
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I used the standard LeNet parameters that we had for our lab but I increased the epochs to 30.  I found that converting to grayscale, normalizing, and increasin the epoch count gained enough performace to move above the required .93 mark.
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of ?
-* validation set accuracy of ? 
+* validation set accuracy of 0.932
 * test set accuracy of ?
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
+I chose a well-known architecture:
+* What architecture was chosen? I chose the LeNet architecture provided in the lab since I was running out of time to complete the project.  I would love to have modified the architecture but just ran out of time.  I spent time exploring various grayscale conversion techniques and normalization methods.  I discarded ones that dropped the accuracy and kept the one of each that increased accuracy.
+* Why did you believe it would be relevant to the traffic sign application?  The architecture learns in stages, first learning the smallest, generic elements.  Then it combines them to larger pieces and so-on until it assembles the final image.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
  
 
@@ -119,10 +112,13 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image4]
 
-The first image might be difficult to classify because ...
+1. The first image should be easy to classify.  It has an even, contrasting background.  It has a relatively straight-on view.  It has a clear, large 50 on it which is difficult to mistake for other sign types.
+2. The second image is more difficult to classify.  It's background is rough including many tree branches interspersed with sky.  The image on the sign includes two people which can be difficult to make out.
+3. The third sign seems to be in the middle of calssification difficulty.  It's background starts a bit dark at the top and brightes up as it moves down.  Then there are dark green trees at the bottom.  The sign only takes up the left half of the image so it is smaller giving it fewer pixels to for an image.  Additionally, it is really two signs.  One includes arrows in a circle (the roundabout) and above it is a type of yield sign.  It is possible that the training images do not include the yield part and only include the circle part.
+4. The fourth sign is a right-turn sign and again, it is smaller and there is a second, smaller right-turn in the background.  The remaining background is also busy with a wall and greenery.
+5. The fifth sign is easy to recognize as STOP is printed across it.  The background varies a bit but is much lighter than the dark red background of the STOP sign.  This sign also takes up most of the frame leaving only a little bit of background. 
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -130,31 +126,30 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| 50 km/hr      		| 50 km/hr   									| 
+| Pedestrians     			| 	Roadwork									|
+| Roundabout					| 	50 km/hr								|
+| Right-turn	      		| 	Priority Road				 				|
+| Stop Sign			| Stop Sign      							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 2 of the 5 traffic signs, which gives an accuracy of 40%. This compares favorably to the accuracy on the test set of ...
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.00         			| 50 km/hr   									| 
+| 0.99     				| U-turn 										|
+| 0.99					| Yield											|
+| 0.77	      			| Priority Road					 				|
+| 1.00				    | Stop sign      							|
 
-
-For the second image ... 
+* The second image was way offbase as the actual value wasn't even in the top 5 choices.
+* The third sign actually included 2 signs but since they were on the same pole and related and since I don't know how German signs work, I assumed they part of the same "sign".  The model predicted the sign as a yield sign with almost 100% accuracy and the top of two signs is a yield sign so this should probably be counted as accurate.
+* The fourth sign was rather high in certainty but was not accurate and one of the top 5 choices were accurate.
+* The first and fifth signs were 100% certain and those were the most obvious signs.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
