@@ -27,7 +27,7 @@ The goals / steps of this project are the following:
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Writeup
@@ -154,6 +154,6 @@ The model was able to correctly guess 2 of the 5 traffic signs, which gives an a
 Note that the html version included in my submission includes the trained model which I used for the data from the 5 signs above.  Later found I had missed a couple of items for the writeup so I trained it one more time after adding in a couple cells to get the accuracy of the test and validation sets.  The actual Jupyter notebook includes those code cells near the end and it includes different 5-sign results.  The 1st and 5th sign are still predicted accurately but the roundabout is now accurate.  It predicted the sign as a roundabout instead of a yield.  It's accuracy also pretty high as 0.852.  It is interesting that yield, which was predicted in the last model, wasn't even in the top 5 softmax probabilities this time.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
 
